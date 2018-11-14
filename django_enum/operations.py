@@ -318,7 +318,9 @@ class AlterEnum(EnumOperation):
                 for value in self.add_values:
                     sql = schema_editor.sql_alter_enum % {
                         'enum_type': self.db_type,
-                        'value': '%s'}
+                        'value': '%s',
+                        'condition': ''
+                    }
                     post_actions.append((sql, [value]))
             elif schema_editor.connection.features.has_enum:
                 for (from_model, to_model, field, on_delete) in fields:
